@@ -85,7 +85,25 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'test article #1',
+    date: 'Dec 1st, 2019',
+    firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Felis imperdiet proin fermentum leo. Porttitor eget dolor morbi non. Blandit massa enim nec dui nunc mattis enim ut. Et netus et malesuada fames. Volutpat ac tincidunt vitae semper quis lectus nulla at. Ultricies lacus sed turpis tincidunt. Pellentesque elit eget gravida cum sociis natoque penatibus et magnis. Adipiscing elit ut aliquam purus sit amet luctus venenatis. `,
+
+    secondParagraph: ` Malesuada fames ac turpis egestas sed tempus urna. Egestas sed tempus urna et. Id nibh tortor id aliquet lectus proin nibh. Montes nascetur ridiculus mus mauris vitae ultricies leo. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem.`,
+
+    thirdParagraph: `quam lacus suspendisse. Accumsan tortor posuere ac ut. Erat nam at lectus urna duis convallis convallis tellus id. Gravida rutrum quisque non tellus orci ac. Id velit ut tortor pretium viverra suspendisse potenti nullam ac. Et tortor consequat id porta nibh venenatis cras. In ante metus dictum at tempor commodo ullamcorper. Rhoncus dolor purus non enim praesent elementu`
+  },
+  {
+    title: 'test article #2',
+    date: 'Dec 10th, 2019',
+    firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Felis imperdiet proin fermentum leo. Porttitor eget dolor morbi non. Blandit massa enim nec dui nunc mattis enim ut. Et netus et malesuada fames. Volutpat ac tincidunt vitae semper quis lectus nulla at. Ultricies lacus sed turpis tincidunt. Pellentesque elit eget gravida cum sociis natoque penatibus et magnis. Adipiscing elit ut aliquam purus sit amet luctus venenatis. `,
+
+    secondParagraph: ` Malesuada fames ac turpis egestas sed tempus urna. Egestas sed tempus urna et. Id nibh tortor id aliquet lectus proin nibh. Montes nascetur ridiculus mus mauris vitae ultricies leo. Auctor neque vitae tempus quam pellentesque nec nam aliquam sem.`,
+
+    thirdParagraph: `quam lacus suspendisse. Accumsan tortor posuere ac ut. Erat nam at lectus urna duis convallis convallis tellus id. Gravida rutrum quisque non tellus orci ac. Id velit ut tortor pretium viverra suspendisse potenti nullam ac. Et tortor consequat id porta nibh venenatis cras. In ante metus dictum at tempor commodo ullamcorper. Rhoncus dolor purus non enim praesent elementu`
+  },
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -113,7 +131,7 @@ const data = [
 
 */
 
-function createNew(data) {
+function createNew(info) {
   let article = document.createElement('div')
   let title = document.createElement('h2')
   let date = document.createElement('p')
@@ -123,7 +141,7 @@ function createNew(data) {
   let btn = document.createElement('span')
 
   article.classList.add('article')
-  article.classList.add('article-open')
+  // article.classList.add('article-open')
   date.classList.add('date')
   btn.classList.add('expandButton')
 
@@ -134,14 +152,35 @@ function createNew(data) {
   article.appendChild(p3)
   article.appendChild(btn)
 
-  title.textContent = data.title
-  p1.textContent = data.firstParagraph
-  p2.textContent = data.secondParagraph
-  p3.textContent = data.thirdParagraph
-  btn.textContent = 'placeholder text'
+  // title.textContent = data.title
+  // p1.textContent = data.firstParagraph
+  // p2.textContent = data.secondParagraph
+  // p3.textContent = data.thirdParagraph
+  // btn.textContent = 'placeholder text'
 
-  btn.addEventListener('click', () => {
-
+  btn.addEventListener('click', (event) => {
+  article.classList.toggle('article-open')
   })
-
+  return article
 }
+
+data.forEach( variable => {
+let newPost = createNew(data)
+
+let postTitle = newPost.querySelector('h2')
+postTitle.textContent = variable.title
+let postDate = newPost.querySelector('p.date')
+postDate.textContent = variable.date
+let postP1 = newPost.querySelector('p:nth-child(3)')
+postP1.textContent = variable.firstParagraph
+let postP2 = newPost.querySelector('p:nth-child(4)')
+postP2.textContent = variable.secondParagraph
+let postP3 = newPost.querySelector('p:nth-child(5)')
+postP3.textContent = variable.thirdParagraph
+let button = newPost.querySelector('.expandButton')
+button.textContent ='placeholder'
+
+let articles = document.querySelector('.articles')
+
+articles.appendChild(newPost)
+})
