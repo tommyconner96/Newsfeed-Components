@@ -141,7 +141,6 @@ function createNew(info) {
   let btn = document.createElement('span')
 
   article.classList.add('article')
-  // article.classList.add('article-open')
   date.classList.add('date')
   btn.classList.add('expandButton')
 
@@ -151,12 +150,6 @@ function createNew(info) {
   article.appendChild(p2)
   article.appendChild(p3)
   article.appendChild(btn)
-
-  // title.textContent = data.title
-  // p1.textContent = data.firstParagraph
-  // p2.textContent = data.secondParagraph
-  // p3.textContent = data.thirdParagraph
-  // btn.textContent = 'placeholder text'
 
   btn.addEventListener('click', (event) => {
   article.classList.toggle('article-open')
@@ -178,7 +171,7 @@ postP2.textContent = variable.secondParagraph
 let postP3 = newPost.querySelector('p:nth-child(5)')
 postP3.textContent = variable.thirdParagraph
 let button = newPost.querySelector('.expandButton')
-button.textContent ='placeholder'
+button.textContent ='expand'
 
 let articles = document.querySelector('.articles')
 
